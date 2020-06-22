@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Predictall Sign Up</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Bundesliga Stats Predictions Game">
+		<meta name="keywords" content="Bundesliga, Home Page, German, Football">
+		<meta name="author" content="Petrescu Cosmin">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="/css/style.css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+	</head>
+	<body>
+		<%- include("../fragmente/header") %>
+		<main>
+			<h1>Create an account: </h1>
+			<form id="signup" method="post" action="/inreg"> 
+                <label>Name</label>
+                <input type="text" id="nume" name="nume" required>
+                <br>     
+                <label>Username</label>
+                <input type="text" id="username" name="username" maxlength="20" required>
+                <br>
+                <label>Email</label>
+                <input type="email" id="" name="email" required>
+                <br>         
+                <label>Password</label>
+                <input type="password" id="" name="parola" maxlength="20" required>  
+                <br>       
+                <label>Favourite team</label>
+				<input list="teams" id="" name="favourite team" required>
+				<datalist id="teams">
+					<option value="1. FC Koln">
+					<option value="1. FC Union Berlin">
+					<option value="1. FSV Mainz 05">
+					<option value="Bayer 04 Leverkusen">
+					<option value="Borussia Dortmund">
+					<option value="Borussia Monchengladbach">
+					<option value="Eintracht Frankfurt">
+					<option value="FC Augsburg">
+					<option value="FC Bayern Munchen">
+					<option value="FC Schalke 04">
+					<option value="Fortuna Dusseldorf">
+					<option value="Hertha Berlin">
+					<option value="RB Leipzig">
+					<option value="SC Paderborn 07">
+					<option value="Sport-Club Freiburg">
+					<option value="SV Werder Bremen">
+					<option value="TSG 1899 Hoffenheim">
+					<option value="VfL Wolfsburg">
+				</datalist>
+                <br>
+                <label>Country</label>
+                <input type="text" id="" name="country" required>
+                <br>
+                <input type="submit" value="Sign up">                                     
+            </form>
+		</main>
+		<%- include("../fragmente/footer") %>
+
+	</body>
+</html>

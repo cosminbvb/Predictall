@@ -1,0 +1,61 @@
+{
+    "lastId": 7,
+    "userPredictions": [
+        {
+            "id": 0,
+            "userId": 1,
+            "predictionDate": "2020-06-04T14:33:34.435Z",
+            "predictionId": 1,
+            "score1": "3",
+            "score2": "1"
+        },
+        {
+            "id": 1,
+            "userId": 1,
+            "predictionDate": "2020-06-04T18:04:33.954Z",
+            "predictionId": 0,
+            "score1": "2",
+            "score2": "1"
+        },
+        {
+            "id": 2,
+            "userId": 1,
+            "predictionDate": "2020-06-21T22:01:50.803Z",
+            "predictionId": 0,
+            "score1": "2",
+            "score2": "1"
+        },
+        {
+            "id": 3,
+            "userId": 1,
+            "predictionDate": "2020-06-21T22:01:53.336Z",
+            "predictionId": 0,
+            "score1": "2",
+            "score2": "1"
+        },
+        {
+            "id": 4,
+            "userId": 1,
+            "predictionDate": "2020-06-21T22:01:53.455Z",
+            "predictionId": 0,
+            "score1": "20",
+            "score2": "1"
+        },
+        {
+            "id": 5,
+            "userId": 1,
+            "predictionDate": "2020-06-21T22:01:54.908Z",
+            "predictionId": 0,
+            "score1": "2",
+            "score2": "1"
+        },
+        {
+            "id": 6,
+            "userId": 1,
+            "predictionDate": "2020-06-21T22:02:09.265Z",
+            "predictionId": 0,
+            "score1": "7",
+            "score2": "1"
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "lastId":8,
+    "predictions":[
+        {
+             "id":0,
+             "team1":"Borussia Dortmund",
+             "link1":"/images/teams/bvb.png",
+             "team2":"FC Schalke 04",
+             "link2":"/images/teams/schalke.png"
+        },
+        {
+            "id":1,
+            "team1":"RB Leipzig",
+            "link1":"/images/teams/leipzig.png",
+            "team2":"Sport-Club Freiburg",
+            "link2":"/images/teams/freiburg.png"
+        },
+        {
+            "id":2,
+            "team1":"Eintracht Frankfurt",
+            "link1":"/images/teams/frankfurt.png",
+            "team2":"Borussia Monchengladbach",
+            "link2":"/images/teams/gladbach.png"
+        },
+        {
+            "id":3,
+            "team1":"SV Werder Bremen",
+            "link1":"/images/teams/bremen.png",
+            "team2":"Bayer 04 Leverkusen",
+            "link2":"/images/teams/lever.png"
+        },
+        {
+            "id":4,
+            "team1":"TSG 1899 Hoffenheim",
+            "link1":"/images/teams/hoffe.png",
+            "team2":"Hertha Berlin",
+            "link2":"/images/teams/herta.png"
+        },
+        {
+            "id":5,
+            "team1":"Fortuna Dusseldorf",
+            "link1":"/images/teams/fortuna.png",
+            "team2":"SC Paderborn 07",
+            "link2":"/images/teams/paderborn.png"
+        },
+        {
+            "id":6,
+            "team1":"FC Augsburg",
+            "link1":"/images/teams/augsburg.png",
+            "team2":"VfL Wolfsburg",
+            "link2":"/images/teams/wolf.png"
+        },
+        {
+            "id":7,
+            "team1":"1. FC Koln",
+            "link1":"/images/teams/koln.png",
+            "team2":"1. FSV Mainz 05",
+            "link2":"/images/teams/mainz.png"
+        },
+        {
+            "id":8,
+            "team1":"1. FC Union Berlin",
+            "link1":"/images/teams/union.png",
+            "team2":"FC Bayern Munchen",
+            "link2":"/images/teams/bayern.png"
+        }
+    ]
+}

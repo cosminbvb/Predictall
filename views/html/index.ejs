@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Predictall Home</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Bundesliga Stats Predictions Game">
+		<meta name="keywords" content="Bundesliga, Home Page, German, Football">
+		<meta name="author" content="Petrescu Cosmin">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="/css/style.css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+	</head>
+	<body>
+		<!-- instructiune EJS -->
+		<%- include("../fragmente/header") %> <!-- nu e necesar sa specificam si extensia ejs -->
+		<!-- minusul de dupa < %  imi asigura faptul ca tagurile sunt tratate ca taguri si nu sunt afisate efectiv simbolurile <  si > -->
+		<main>
+			<h1>Predictall</h1>
+			<section>
+				<h2>Welcome to Predictall - Bundesliga</h2>
+				<p id="intro"><strong>Create an account and show your football knowledge by guessing the score of the Bundesliga games each week.</strong> <br>
+					Don't worry if you don't guess the exact score, the winning team or the goal difference will count too.</p>
+				<p>In case you missed some of the best goals of the 2018-2019 Season, we left them down below.</p>
+				<p id="enjoy"> Have fun and enjoy football! </p>
+				<div class="introvideo-container">
+				<iframe src="https://www.youtube.com/embed/aEa4OLhZUio?autoplay=1&mute=1&loop=1&playlist=N89L0D2YeRI" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</section>
+			<section>
+				<h2 style="color:white">Bundesliga Monthly Awards</h2>
+					<section>
+						<h3 style="color:white"><span style="color: Blue">February</span> Player of the Month - <span style="color:yellow">Jadon Sancho</span></h3>
+						<div id="galerie_sancho" class="galerie">
+							<figure>
+								<img src="/images/sancho.jpg" alt="Jadon Sancho" title="Jadon Sancho"/>
+								<figcaption>Jadon Sancho</figcaption>
+							</figure>
+							<figure>
+								<img src="/images/sancho2.jpg" alt="Jadon Sancho" title="Jadon Sancho"/>
+								<figcaption>Jadon Sancho</figcaption>
+							</figure>
+							<figure>
+								<img src="/images/sancho3.jpg" alt="Jadon Sancho" title="Jadon Sancho"/>
+								<figcaption>Jadon Sancho</figcaption>
+							</figure>
+							<figure>
+								<img src="/images/sancho4.jpg" alt="Jadon Sancho" title="Jadon Sancho"/>
+								<figcaption>Jadon Sancho</figcaption>
+							</figure>
+							<figure>
+								<img src="/images/sancho5.jpg" alt="Jadon Sancho" title="Jadon Sancho"/>
+								<figcaption>Jadon Sancho</figcaption>
+							</figure>
+							<figure>
+								<img src="/images/sancho6.jpg" alt="Jadon Sancho" title="Jadon Sancho"/>
+								<figcaption>Jadon Sancho</figcaption>
+							</figure>
+							<figure>
+								<img src="/images/sancho7.jpg" alt="Jadon Sancho" title="Jadon Sancho"/>
+								<figcaption>Jadon Sancho</figcaption>
+							</figure>
+						</div>
+						<p style="color:white">Jadon Sancho has been unstoppable in recent weeks, chalking up three goals and another three assists in the Bundesliga for Borussia Dortmund in February. With a direct hand in six goals, he was the most prolific source of goals in the Bundesliga last month alongside Christopher Nkunku and Serge Gnabry. He also set up teammates 13 times, which was the most of any BVB player. However, February was just the tip of the iceberg for Sancho this season.</p>
+					</section>
+					<section>
+						<h3 style="color:white"><span style="color: Blue">January</span> Player of the Month - <span style="color:yellow">Erling Haaland</span></h3>
+							<figure class="player">
+								<img src="/images/haaland.jpg" 
+								alt="Erling Haaland"
+								title="Erling Haaland" />
+								<img src="/images/players.jpg" 
+								alt="Players"
+								title="BVB Players" />
+							</figure>
+							<p style="color:white">He came, he saw, and he scored like few before him. Erling Haaland has certainly made a lasting first impression in the Bundesliga. The 19-year-old Norwegian has quickly justified what some may have seen as premature praise following his move from Red Bull Salzburg to Borussia Dortmund. He came off the bench for his debut against FC Augsburg and scored a hat-trick to help BVB turn things around for a 5-3 win. His second appearance a week later also came as a substitute at home to 1. FC Köln, this time bagging himself a brace. “It’s a real shame he’s slacking. Three goals, then two – I hope it’s not one next time,” goalkeeper Roman Bürki joked after the 5-1 win over the Billy Goats</p>
+					</section>
+					<section>
+						<h3 style="color:white">January Rookie Award - <span style="color:yellow">Erling Haaland</span></h3>
+							<p style="color:white">Erling Haaland's record-breaking start to life with Borussia Dortmund in the Bundesliga has sent shockwaves across the footballing world. The Norwegian striker could never have imagined a better beginning with BVB, with the players around him making his goal-scoring job so much easier.</p>
+					</section>
+			</section>
+		</main>
+
+		<%- include("../fragmente/footer") %>
+		
+	</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "predictall",
+  "version": "1.0.0",
+  "description": "Predictall",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cosminbvb/Predictall.git"
+  },
+  "keywords": [
+    "Bundesliga",
+    "Predictions"
+  ],
+  "author": "Petrescu Cosmin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cosminbvb/Predictall/issues"
+  },
+  "homepage": "https://github.com/cosminbvb/Predictall#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "formidable": "^1.2.2"
+  }
+}

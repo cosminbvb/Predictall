@@ -1,0 +1,357 @@
+body{
+	background-color:#000000;
+	font-family: customFont;
+}
+h1, h2, h3, p{
+	color:#EEEEEE;
+	padding-left:50px;
+	margin-top: 30px;
+}
+*{
+    margin:0px;
+    padding:0px;
+    text-indent:0px;
+}
+#intro{
+	margin-top:20px;
+}
+#enjoy{
+	font-size:20px;
+	color: red;
+	margin-top:10px;
+}
+#details{
+	color:#EEEEEE;
+	font-family: customFont;
+	font-size:10px;
+	padding-left:50px;
+	margin-top:50px;
+}
+#awards{
+	margin-top:220px;
+}
+.player{
+	margin-top:20px;
+	display:block;
+	padding-left:50px;
+}
+.player>img{
+	height:350px;
+	margin-right:20px;
+	border-radius: 8% 8% 8% 8%;
+}
+.introvideo-container{
+	min-height:20vh;
+	padding-left: 50px;
+	position: relative;
+	width: 100%;
+	padding-bottom: 30%;
+	height: 0;
+	display: block;
+	width: inherit;
+}
+.introvideo-container iframe{
+	position: absolute;
+	border: none;
+	top: 0;
+	display: block;
+	width: 1000px;
+	height: 600px;
+}
+
+/*--start galerie animate*/
+#galerie_sancho{
+	margin-left:50px;
+}
+.galerie{
+	width:600px;
+	height:300px;
+	position:relative;
+	overflow:hidden;
+	margin-top:1rem;
+	margin-bottom:1rem;
+	border-radius: 7% 7% 7% 7%;
+}
+.galerie figure{
+	position:relative;
+	width:400px;
+	height:300px;
+}
+#galerie_sancho figure{	
+	position:absolute;
+	left:0;
+	top:0;
+	animation-name:gal;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	animation-duration:21s;	
+	transform:scale(1,1);
+	transform-origin:0px center;
+}
+#galerie_sancho figure:nth-of-type(7){
+	animation-delay:0s;
+}
+#galerie_sancho figure:nth-of-type(6){
+	animation-delay:3s;
+}
+#galerie_sancho figure:nth-of-type(5){
+	animation-delay:6s;
+}
+#galerie_sancho figure:nth-of-type(4){
+	animation-delay:9s;
+}
+#galerie_sancho figure:nth-of-type(3){
+	animation-delay:12s;
+}
+#galerie_sancho figure:nth-of-type(2){
+	animation-delay:15s;
+}
+#galerie_sancho figure:nth-of-type(1){
+	animation-delay:18s;
+}
+
+/*cum calculam timpii:
+- avem 7 poze; vrem pentru fiecare un timp de afisare de 2 secunde si o trecere spre urmatoarea poza de 1 secunda
+- rezulta 3 secunde pentru fiecare imagine
+- 7imagini * 3secunde =21 secunde in total pentru animatie (animation-duration) si fiecare poza cu un delay = 3* numarul de ordine
+- momentul in care trebuie ascunsa poza si pusa in spatele celorlalte (ca sa isi astepte randul pentru noua animatie:
+il calculam cu formula  timp_afisare(normal+trecerea la urmatoarea poza)/timp_total*100 = 3/21*100 =  14.28 (aproximativ)
+- calculam 100-14.28=85.72 - la acest moment imaginea trebuie sa se vada in spatele imaginii care se afiseaza in mod curent (ca sa se vada si cat timp se realizeaza efectul de schimbare a imaginii
+*/
+
+@keyframes gal{ 
+	/*
+	0% {z-index:10;opacity:1;} 
+	5% {opacity:1;}
+	13%{opacity:0;} 
+	33.33%{z-index:10;opacity:0;}
+	33.331%{z-index:-1;}
+	66.66%{opacity:1;z-index:-1;}	
+	66.661%{z-index:0;}
+	100%{opacity:0;z-index:0;}
+	*/
+	0% {z-index:10;opacity:1;} /*perioada 0-5% in care se afiseaza fara efect */
+	5% {opacity:1;}
+	13%{opacity:0;} /* de  aici doresc sa descresc si opacitatea;*/
+	14.28%{z-index:10;opacity:0;}
+	14.281%{z-index:-1;}/* il ascund cat mai in spate sa nu vina peste imaginile care erau mai sus in html decat el*/
+	85.71999999%{opacity:1;z-index:-1;}	
+	85.72%{z-index:0;}/*setez z-index la 0 ca sa revina la ordinea normala de afisare*/
+	100%{opacity:1;z-index:0;}
+}
+/*--end galerie animate*/
+
+/*--start nav bar*/
+nav:after {
+	content: " "; /*fara content nu exista elementul after*/
+	clear: both; /*ca sa nu mai permita altor elemente sa vina langa cele de tip float*/
+	display: block;
+	/*ce e mai jos e pentru a ne asigura ca il ascunde*/
+	visibility: hidden;
+	font-size: 0;
+	height: 0;
+}
+.wrapper{
+	background-color: #333;
+	font-family: customFont;
+	font-weight: bold;
+	width: 100%;
+}
+ul.menu>li, ul.menu>li>ul.submenu>li{
+	display:block;
+	font-size:20px;
+	font-weight:bold;
+	height:4rem;
+	line-height:4rem;
+	text-align:center;		
+	list-style-type:none;
+	overflow:hidden;
+}
+ul.menu>li{
+	float:left;
+	width:12.5%;
+}
+ul.submenu>li{
+	width:100%;
+}
+ul.menu>li>a,ul.menu>li>div,ul.submenu>li>a{
+	display:block;
+	height:	100%;
+	text-decoration:none;
+	color:white;
+	background:#333;
+}
+ul.menu>li>ul.submenu{
+	position:relative;
+	top:0px;
+}
+ul.menu>li>ul.submenu>li{
+	border-top:1px solid black;
+}
+ul.menu>li>a:hover, ul.menu>li>div:hover, ul.submenu>li>a:hover{
+	background:red;
+	transition: background-color 1s;
+}
+ul.menu>li:hover{
+	overflow:visible;
+}
+.logo-image{ 
+	margin-top: 2px;
+	margin-bottom: 10px;
+	margin-right: 20px;
+	float: right;
+    width: 30%;
+	max-width: 100%;
+	height: auto;
+	display: block; /* remove extra space below image */
+}
+/*--end nav bar*/
+
+@font-face{
+	font-family: customFont;
+	src: url("/fonts/leaguespartan-bold-webfont.woff");
+}
+
+#iframe-standings{
+	margin: 0;
+	margin-top:20px;
+	padding: 0;
+	border: none;
+	width: 100vw;
+	height: 100vh;
+}
+
+/*Media queries*/
+@media screen and (max-width:700px){
+	html{
+		font-size:10px;
+	}
+	.logo-image{ 
+		margin-top:10px;
+		margin-right: 5px;
+	}
+	#enjoy{
+		font-size:1.7rem;
+	}
+	#galerie_sancho{
+		margin-left:0px;
+	}
+	#galerie_sancho figure img{
+		width:100%;
+	}
+	.galerie{
+		width:100%;
+		height:170px;
+	}
+	ul.menu>li{
+		width:16%;
+	}
+	ul.menu>li, ul.menu>li>ul.submenu>li{
+		font-size:10px;
+	}
+	.introvideo-container{
+		padding-left: 0px;
+		margin-left:0px;
+	}
+	.introvideo-container iframe{
+		width:100%;
+		height:100%;
+	}
+	h1, h2, h3, p{
+		padding-left:1%;
+
+	}
+	#details{
+		padding-left:0px;
+	}
+	.player{
+		padding-left:0px;
+	}
+	.player>img{
+		width:100%;
+		height:100%;
+		margin-right:0px;
+	}
+}
+
+@media screen and (min-width:701px) and (max-width:1100px){
+	html{
+		font-size:13px;
+	}
+	#enjoy{
+		font-size:1.7rem;
+	}
+	ul.menu>li, ul.menu>li>ul.submenu>li{
+		font-size:14px;
+	}
+	.introvideo-container{
+		position: relative;
+		padding-left: 0px;
+		margin-left:0px;
+	}
+	.introvideo-container iframe{
+		width:100%;
+		height:100%;
+	}
+	h1, h2, h3, p{
+		padding-left:1%;
+
+	}
+	#details{
+		padding-left:0px;
+	}
+	.player{
+		padding-left:0px;
+		display:flex;
+		flex-wrap:wrap;
+		justify-content: center;
+	}
+	.player>img{
+		margin-right:0px;
+		height: 100%;
+		width: 80%;
+
+	}
+}
+@media screen and (min-width:1100px) and (max-width:1500px){
+	.introvideo-container iframe{
+		width:90%;
+		height:90%;
+	}
+}
+#error{
+	font-size: 4vw;
+	text-align: center;
+}
+#fail{
+	display: block;
+	margin:auto;
+	width:70%;
+	height:70%;
+}
+#login{
+	display: grid;
+	margin-right: 3%;
+	float: right;
+	color: white;
+}
+#signup{
+	display: grid;
+	color:white;
+	margin-left: 3%;
+	margin-top:3%;
+	width: 50%;
+}
+input{
+	background-color: black;
+	border:1px solid white; 
+	color:white;
+}
+input[type=submit]{
+	border:0px;
+	background-color:red;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:customFont;
+
+}

@@ -1,0 +1,47 @@
+<header>
+    <nav class="wrapper">
+        <ul class="menu">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/standings">Standings</a></li>
+            <li><a href="/matches">Matches</a></li>
+            <li>
+                <div>Profile</div>
+                <ul class="submenu">
+                    <li><a href="/predictions">Predictions</a></li>
+                    <li><a href="/inreg">Sign Up</a></li>
+                </ul>
+            </li>
+        </ul>
+        <img src="/images/bundesliga-logo-smaller.png" alt="Bundesliga-Logo" class="logo-image">
+    </nav>
+    <!-- verific daca s-a transmis campul username -->
+    <!-- campurile transmise in render devin proprietati ale obiectului locals -->
+    <% if(!locals.username) { %>
+        <% if(locals.error) { %> 
+            <form id="login" action="/login" method="post">
+                <label>Username</label>
+                <input style="color:white" type="text" id="username" name="username" maxlength="20" value="Incorrect id/password" required> 
+                <br>
+                <label>Password</label>
+                <input type="password" id="password" name="parola" maxlength="20" required>
+                <br>
+                <input type="submit" id="submit" value="Log in">
+            </form>  
+        <%}
+        else {%>
+            <form id="login" action="/login" method="post">
+                <label>Username</label>
+                <input type="text" id="username" name="username">
+                <br>
+                <label>Password</label>
+                <input type="password" id="password" name="parola">
+                <br>
+                <input type="submit" id="submit" value="Log in">
+            </form>    
+        <%} %>
+    <% }
+        else { %><p style="color:red; display: block; float: right; margin-top: 0%; margin-right: 1%;">
+        User: <%= locals.username %> </p> <br>
+        <a href="/logout" style="color:red; display: block; float: right; margin-right: 1%;">Logout</a>
+        <% } %>
+</header>
