@@ -1,0 +1,65 @@
+{
+    "lastId": 6,
+    "useri": [
+        {
+            "id": 0,
+            "username": "cosminbvb",
+            "nume": "Petrescu Cosmin",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "country": "Romania",
+            "score": 20,
+            "dataInreg": "2020-06-24T15:18:07.290Z",
+            "rol": "user"
+        },
+        {
+            "id": 1,
+            "username": "tudorp00",
+            "nume": "Tudor Pescaru",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "country": "Romania",
+            "score": 30,
+            "dataInreg": "2020-06-24T15:19:18.082Z",
+            "rol": "user"
+        },
+        {
+            "id": 2,
+            "username": "cosmincos",
+            "nume": "Cosmin aus Deutschland",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "country": "Germany",
+            "score": 25,
+            "dataInreg": "2020-06-24T15:21:03.055Z",
+            "rol": "user"
+        },
+        {
+            "id": 3,
+            "username": "viorelbossu",
+            "nume": "Ion Viorel",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "country": "Romania",
+            "score": 30,
+            "dataInreg": "2020-06-24T15:21:38.638Z",
+            "rol": "user"
+        },
+        {
+            "id": 4,
+            "username": "juanmiguel",
+            "nume": "Juan Miguel",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "country": "Spain",
+            "score": 75,
+            "dataInreg": "2020-06-24T15:22:19.297Z",
+            "rol": "user"
+        },
+        {
+            "id": 5,
+            "username": "matei",
+            "nume": "Matei Iordache",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "country": "Romania",
+            "score": 15,
+            "dataInreg": "2020-06-24T15:52:27.822Z",
+            "rol": "user"
+        }
+    ]
+}

@@ -13,7 +13,11 @@
 	<body>
 		<%- include("../fragmente/header") %>
 		<main>
-			<h1>Create an account: </h1>
+			<% if (locals.username != null) {%>
+				<h2 style="color:red; display: block; margin-right: 1%;">
+					You already have an account.</h2>
+			<%} else {%>
+				<h1>Create an account: </h1>
 			<form id="signup" method="post" action="/inreg"> 
                 <label>Name</label>
                 <input type="text" id="nume" name="nume" required>
@@ -55,6 +59,8 @@
                 <br>
                 <input type="submit" value="Sign up">                                     
             </form>
+			<%} %> 
+			
 		</main>
 		<%- include("../fragmente/footer") %>
 

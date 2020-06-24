@@ -37,7 +37,7 @@ app.get('/', function(req, res) {
 
 app.get('/matches', function(req, res) {
 	/*afiseaza(render) pagina folosind ejs (deoarece este setat ca view engine) */
-	let fisiereMatches=fs.readFileSync("resources/json/prediction.json")
+	let fisiereMatches=fs.readFileSync("resources/json/fixtures.json")
 	fisierMatches=JSON.stringify(fisiereMatches);
 	var numeUtiliz= req.session? (req.session.utilizator? req.session.utilizator.username : null) : null;
 	var personalId= req.session? (req.session.utilizator? req.session.utilizator.id : null) : null;
@@ -65,7 +65,7 @@ app.post('/inreg', function(req, res) {
 		  //files provine din inputurile de tip file <input type="file"....
 		  //fields sunt toate celelalte
 		  //in fields proprietatile sunt valorile atributelor name din inputurile din formular
-		  fisierUseri=fs.readFileSync("useri.json");
+		  fisierUseri=fs.readFileSync("resources/json/useri.json");
 		  var parolaCriptata;
 		  //al doilea argument e parola(cheia) de criptare
 		  var algoritmCriptare=crypto.createCipher('aes-128-cbc',"parola_criptare");
@@ -79,13 +79,14 @@ app.post('/inreg', function(req, res) {
 				parola: parolaCriptata,
 				favouriteTeam: fields.favouriteTeam,
 				country:fields.country,
+				score: 0,
 				dataInreg:new Date(),
 				rol: "user"
 		  }
 		  obUseri.useri.push(userNou);
 	  	  obUseri.lastId++;
 		  var jsonNou=JSON.stringify(obUseri);
-		  fs.writeFileSync("useri.json",jsonNou );
+		  fs.writeFileSync("resources/json/useri.json",jsonNou );
 		  res.redirect("/")
 	  })
   })
@@ -94,7 +95,7 @@ app.post('/inreg', function(req, res) {
 app.post('/login', function(req, res) {
 	var formular= new formidable.IncomingForm()
 	formular.parse(req, function(err, fields, files){
-		fisierUseri=fs.readFileSync("useri.json");
+		fisierUseri=fs.readFileSync("resources/json/useri.json");
 		var parolaCriptata;
 		//al doilea argument e parola(cheia) de criptare
 		var algoritmCriptare=crypto.createCipher('aes-128-cbc',"parola_criptare");
