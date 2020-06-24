@@ -41,13 +41,10 @@ app.get('/matches', function(req, res) {
 	fisierMatches=JSON.stringify(fisiereMatches);
 	var numeUtiliz= req.session? (req.session.utilizator? req.session.utilizator.username : null) : null;
 	var personalId= req.session? (req.session.utilizator? req.session.utilizator.id : null) : null;
-
-	console.log(personalId)
 	res.render('html/matches',{file:fisiereMatches,username: numeUtiliz,id:personalId});
 });
 
 app.get("/*", function(req,res){
-	console.log(req.url);
 	var numeUtiliz= req.session? (req.session.utilizator? req.session.utilizator.username : null) : null;
 	res.render('html'+req.url, {username: numeUtiliz}, function(err,textRandare){
 		//textRandare este rezultatul compilarii templateului ejs
@@ -63,15 +60,11 @@ app.get("/*", function(req,res){
 })
 
 app.post('/inreg', function(req, res) {
-	console.log("test");
 	var formular= new formidable.IncomingForm()
 	  formular.parse(req, function(err, fields, files){
 		  //files provine din inputurile de tip file <input type="file"....
 		  //fields sunt toate celelalte
-  
 		  //in fields proprietatile sunt valorile atributelor name din inputurile din formular
-		  // <input type="text" name="username" 
-		  console.log(fields.username)
 		  fisierUseri=fs.readFileSync("useri.json");
 		  var parolaCriptata;
 		  //al doilea argument e parola(cheia) de criptare
@@ -116,12 +109,10 @@ app.post('/login', function(req, res) {
 		if(utiliz){
 			//setez datele de sesiune
 			req.session.utilizator=utiliz;
-			console.log("Exista utilizatorul")
 			//render primeste pe al doilea parametru date (organizate sub forma unui obiect) care pot fi transmise catre ejs (template) 
 			res.render("html/index", {username: utiliz.username})
 		}
 		else{
-			console.log("Username or password incorrect")
 			res.render("html/index", {error: "Username or password incorrect"})
 		}
 	})
@@ -134,7 +125,6 @@ app.post('/submitPredictions', function(req,res){
 	obUserPredictions.lastId++;
 	var jsonNou=JSON.stringify(obUserPredictions);
 	fs.writeFileSync("resources/json/userPredictions.json",jsonNou);
-	console.log(req.body);
 })
 
 app.listen(8080);
