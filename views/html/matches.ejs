@@ -12,56 +12,66 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
 
 		<script type="text/javascript">
-			let fisier=<%- locals.file %>;
-			let id =<%- locals.id %>;
+			
+			let fisier = <%- locals.file %>;
+			<% if (locals.id != null) {%>
+				let id = <%- locals.id %>
+			<%} else {%>
+				let id = null;
+			<%} %> 
+			console.log(id);
+
 			var lastId;
 			window.onload=function(){
 				//loading the current matches from predictions.json
-				var parent=document.getElementsByClassName('matches')[0];
-				for(let i=0;i<=8;i++){
-					var currentMatch;
-					for(let j in fisier.predictions){
-						if(fisier.predictions[j].id==i){
-							currentMatch=fisier.predictions[j];
-							break;
+				if(id != null)
+				{
+					var parent=document.getElementsByClassName('matches')[0];
+					for(let i=0;i<=8;i++){
+						var currentMatch;
+						for(let j in fisier.predictions){
+							if(fisier.predictions[j].id==i){
+								currentMatch=fisier.predictions[j];
+								break;
+							}
 						}
+						var Logo1=document.createElement('div');
+						Logo1.className='team-logo';
+						var Img1=document.createElement('img');
+						Img1.src=currentMatch.link1;
+						Logo1.appendChild(Img1);
+						var Logo2=document.createElement('div');
+						Logo2.className='team-logo';
+						var Img2=document.createElement('img');
+						Img2.src=currentMatch.link2;
+						Logo2.appendChild(Img2);
+						var score1=document.createElement('div');
+						score1.className='score';
+						score1.classList.add('score1');
+						score1.contentEditable=true;
+						score1.onkeyup=sendScore;
+						score1.innerHTML='?';
+						var score2=document.createElement('div');
+						score2.className='score';
+						score2.classList.add('score2');
+						score2.contentEditable=true;
+						score2.onkeyup=sendScore;
+						score2.innerHTML='?';
+						var Team1=document.createElement('div');
+						Team1.className='team';
+						Team1.innerHTML=currentMatch.team1;
+						var Team2=document.createElement('div');
+						Team2.innerHTML=currentMatch.team2;
+						parent.appendChild(Logo1);
+						parent.appendChild(Team1);
+						parent.appendChild(score1);
+						parent.appendChild(score2);
+						parent.appendChild(Team2);
+						parent.appendChild(Logo2);
 					}
-					var Logo1=document.createElement('div');
-					Logo1.className='team-logo';
-					var Img1=document.createElement('img');
-					Img1.src=currentMatch.link1;
-					Logo1.appendChild(Img1);
-					var Logo2=document.createElement('div');
-					Logo2.className='team-logo';
-					var Img2=document.createElement('img');
-					Img2.src=currentMatch.link2;
-					Logo2.appendChild(Img2);
-					var score1=document.createElement('div');
-					score1.className='score';
-					score1.classList.add('score1');
-					score1.contentEditable=true;
-					score1.onkeyup=sendScore;
-					score1.innerHTML='?';
-					var score2=document.createElement('div');
-					score2.className='score';
-					score2.classList.add('score2');
-					score2.contentEditable=true;
-					score2.onkeyup=sendScore;
-					score2.innerHTML='?';
-					var Team1=document.createElement('div');
-					Team1.className='team';
-					Team1.innerHTML=currentMatch.team1;
-					var Team2=document.createElement('div');
-					Team2.innerHTML=currentMatch.team2;
-					parent.appendChild(Logo1);
-					parent.appendChild(Team1);
-					parent.appendChild(score1);
-					parent.appendChild(score2);
-					parent.appendChild(Team2);
-					parent.appendChild(Logo2);
+					//if the user is logged in, we load his past predictions for the current matchday
+					getPastPredictions();
 				}
-				//if the user is logged in, we load his past predictions for the current matchday
-				if(id!=null) getPastPredictions();
 			}
 			function getPastPredictions(){
 				//creez un obiect de tip XMLHttpRequest cu care pot 
@@ -158,13 +168,15 @@
 			<section id="sectiune1">
 				<h1>Matches</h1>
 				<p>MATCHDAY 26 | SEASON 2019-2020</p>
-				<% if(!locals.id) { %> 
+				<% if(locals.id != null) { console.log(locals.id) %> 
+					<!--<button id="submitPred" onclick="submitPredictions()">Submit Predictions</button>-->
+					<div class="matches">
+					</div>
+				<%} else {%>
 					<h2 style="color:red; display: block; float: left; margin-top: 5%; margin-right: 1%;">
-					You'll need to log in for this one.</p> 
+					You'll need to log in for this one.</h2> 
+					
 				<%} %>
-				<!--<button id="submitPred" onclick="submitPredictions()">Submit Predictions</button>-->
-				<div class="matches">
-				</div>
 			</section>
 		</main>
 

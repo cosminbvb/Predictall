@@ -1,10 +1,11 @@
-var formidable = require("formidable");
-var crypto=require("crypto"); //default
-var session=require("express-session");
-var fs=require("fs"); //default
-var bodyParser = require('body-parser');
-var express = require('express');/*include modulul express
-memorand in variabila express obiectul asociat modulului(exportat de modul)*/
+const express = require('express');/*include modulul express memorand in variabila express obiectul asociat modulului(exportat de modul)*/
+const fs = require("fs"); //default
+
+const bodyParser = require('body-parser');
+const formidable = require("formidable");
+const crypto = require("crypto"); //default
+const session = require("express-session");
+
 var path = require('path');
 var app = express(); //aici avem serverul
 
@@ -13,7 +14,7 @@ app.set('view engine', 'ejs');
 
 console.log(__dirname);//calea catre radacina proiectului
 app.use(express.static(path.join(__dirname, "resources")))
-//din acest moment toate caile catre fisierele statice le scriem relativ la folderul resources
+// din acest moment toate caile catre fisierele statice le scriem relativ la folderul resources
 
 app.use(session({
 	secret: "cheie_sesiune",
@@ -40,6 +41,8 @@ app.get('/matches', function(req, res) {
 	fisierMatches=JSON.stringify(fisiereMatches);
 	var numeUtiliz= req.session? (req.session.utilizator? req.session.utilizator.username : null) : null;
 	var personalId= req.session? (req.session.utilizator? req.session.utilizator.id : null) : null;
+
+	console.log(personalId)
 	res.render('html/matches',{file:fisiereMatches,username: numeUtiliz,id:personalId});
 });
 
@@ -105,15 +108,14 @@ app.post('/login', function(req, res) {
 		parolaCriptata=algoritmCriptare.update(fields.parola, "utf-8", "hex");
 		parolaCriptata+=algoritmCriptare.final("hex");
 		obUseri= JSON.parse(fisierUseri);
-	//var personalId;
-	var utiliz= obUseri.useri.find(function(u) {
-		return u.username == fields.username && parolaCriptata == u.parola;
-	});
+		//var personalId;
+		var utiliz= obUseri.useri.find(function(u) {
+			return u.username == fields.username && parolaCriptata == u.parola;
+		});
 		//find returneaza null daca nu gaseste elementul cu conditia data
 		if(utiliz){
 			//setez datele de sesiune
 			req.session.utilizator=utiliz;
-			//req.session.id=personalId;
 			console.log("Exista utilizatorul")
 			//render primeste pe al doilea parametru date (organizate sub forma unui obiect) care pot fi transmise catre ejs (template) 
 			res.render("html/index", {username: utiliz.username})
@@ -123,7 +125,7 @@ app.post('/login', function(req, res) {
 			res.render("html/index", {error: "Username or password incorrect"})
 		}
 	})
-  })
+})
   
 app.post('/submitPredictions', function(req,res){
 	fisierPredictions=fs.readFileSync("resources/json/userPredictions.json");

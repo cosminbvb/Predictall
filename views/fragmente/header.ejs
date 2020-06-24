@@ -14,31 +14,24 @@
         </ul>
         <img src="/images/bundesliga-logo-smaller.png" alt="Bundesliga-Logo" class="logo-image">
     </nav>
+
     <!-- verific daca s-a transmis campul username -->
     <!-- campurile transmise in render devin proprietati ale obiectului locals -->
-    <% if(!locals.username) { %>
-        <% if(locals.error) { %> 
-            <form id="login" action="/login" method="post">
-                <label>Username</label>
-                <input style="color:white" type="text" id="username" name="username" maxlength="20" value="Incorrect id/password" required> 
-                <br>
-                <label>Password</label>
-                <input type="password" id="password" name="parola" maxlength="20" required>
-                <br>
-                <input type="submit" id="submit" value="Log in">
-            </form>  
-        <%}
-        else {%>
-            <form id="login" action="/login" method="post">
-                <label>Username</label>
-                <input type="text" id="username" name="username">
-                <br>
-                <label>Password</label>
-                <input type="password" id="password" name="parola">
-                <br>
-                <input type="submit" id="submit" value="Log in">
-            </form>    
-        <%} %>
+    <% if(!locals.username) {
+        if(locals.error) { %> 
+            <script>
+                alert("Incorrect id/password");
+            </script>
+    <%} %>
+        <form id="login" action="/login" method="post">
+            <label>Username</label>
+            <input type="text" id="username" name="username">
+            <br>
+            <label>Password</label>
+            <input type="password" id="password" name="parola">
+            <br>
+            <input type="submit" id="submit" value="Log in">
+        </form>      
     <% }
         else { %><p style="color:red; display: block; float: right; margin-top: 0%; margin-right: 1%;">
         User: <%= locals.username %> </p> <br>
