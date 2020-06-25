@@ -20,24 +20,33 @@
 <body>
 	<%- include("../fragmente/header") %>
 	<main>
-		<h1>Leaderboard - Top 50</h1>
+		<h1>Leaderboard - Top 15</h1>
+		<input type="text" id="searchUserName" onkeyup="searchUserName()" placeholder="Search for usernames..">
 		<div id="leaderboard_div" style="color:white;" class="grid">
-			<span>
+			<span class="col">
+				<strong>Nr</strong>
+			</span>
+			<span class="col col_functional" onclick="orderByUserName()">
 				<strong>Username</strong>
 			</span>
-			<span>
+			<span class="col col_functional" onclick="orderByName()">
 				<strong>Name</strong>
 			</span>
-			<span>
+			<span class="col col_functional" onclick="orderByScore()">
 				<strong>Score</strong>
 			</span>
-			<span>
+			<span class="col">
 				<strong>Country</strong>
 			</span>
-			<span>
+			<span class="col">
 				<strong>Team</strong>
 			</span>
 		</div>
+		<ul style="color:white; margin-left:3%;">
+			<li class="legend" style="color:white" id="average">Average Score: </li>
+			<li class="legend" style="color:white"><span style="color:green">Green</span> - above average</li>
+			<li class="legend" style="color:white"><span style="color:orange">Orange</span> - below average</li>
+		</ul>
 	</main>
 	<%- include("../fragmente/footer") %>
 

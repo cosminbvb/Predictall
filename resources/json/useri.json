@@ -1,5 +1,5 @@
 {
-    "lastId": 4,
+    "lastId": 15,
     "useri": [
         {
             "id": 0,
@@ -43,6 +43,127 @@
             "country": "Argentina",
             "score": 18,
             "dataInreg": "2020-06-24T23:56:15.218Z",
+            "rol": "user"
+        },
+        {
+            "id": 4,
+            "username": "mateiSimp",
+            "nume": "Matei Mindruleanu",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "FC Schalke 04",
+            "country": "Simpia",
+            "score": 0,
+            "dataInreg": "2020-06-25T00:11:23.131Z",
+            "rol": "user"
+        },
+        {
+            "id": 5,
+            "username": "andreiion",
+            "nume": "Andrei Ion",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "Fortuna Dusseldorf",
+            "country": "Romania",
+            "score": 0,
+            "dataInreg": "2020-06-25T10:02:09.303Z",
+            "rol": "user"
+        },
+        {
+            "id": 6,
+            "username": "eminescu20",
+            "nume": "Mihai Eminescu",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "Eintracht Frankfurt",
+            "country": "Bulgaria",
+            "score": 4,
+            "dataInreg": "2020-06-25T10:03:06.387Z",
+            "rol": "user"
+        },
+        {
+            "id": 7,
+            "username": "crengute21",
+            "nume": "Ion Creanga",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "1. FC Koln",
+            "country": "Spain",
+            "score": 6,
+            "dataInreg": "2020-06-25T10:04:12.115Z",
+            "rol": "user"
+        },
+        {
+            "id": 8,
+            "username": "edi1999",
+            "nume": "Eduard Ionescu",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "FC Bayern Munchen",
+            "country": "Romania",
+            "score": 20,
+            "dataInreg": "2020-06-25T10:04:52.836Z",
+            "rol": "user"
+        },
+        {
+            "id": 9,
+            "username": "sadoveanu70",
+            "nume": "Mihail Sadoveanu",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "FC Augsburg",
+            "country": "Estonia",
+            "score": 21,
+            "dataInreg": "2020-06-25T10:06:38.960Z",
+            "rol": "user"
+        },
+        {
+            "id": 10,
+            "username": "plumbsad",
+            "nume": "George Bacovia",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "1. FC Koln",
+            "country": "Romania",
+            "score": 0,
+            "dataInreg": "2020-06-25T10:07:26.820Z",
+            "rol": "user"
+        },
+        {
+            "id": 11,
+            "username": "lewa9",
+            "nume": "Robert Lewandowski",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "FC Bayern Munchen",
+            "country": "Poland",
+            "score": 6,
+            "dataInreg": "2020-06-25T10:08:25.251Z",
+            "rol": "user"
+        },
+        {
+            "id": 12,
+            "username": "andrei2000",
+            "nume": "Andrei Ivan",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "Hertha Berlin",
+            "country": "Romania",
+            "score": 7,
+            "dataInreg": "2020-06-25T10:09:13.375Z",
+            "rol": "user"
+        },
+        {
+            "id": 13,
+            "username": "apaminerala",
+            "nume": "Borsec Dorna",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "Borussia Monchengladbach",
+            "country": "Germany",
+            "score": 24,
+            "dataInreg": "2020-06-25T10:09:44.555Z",
+            "rol": "user"
+        },
+        {
+            "id": 14,
+            "username": "mario10",
+            "nume": "Mario Gotze",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "Borussia Dortmund",
+            "country": "Germany",
+            "score": 0,
+            "dataInreg": "2020-06-25T11:23:52.024Z",
             "rol": "user"
         }
     ]

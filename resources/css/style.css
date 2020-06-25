@@ -358,11 +358,10 @@ input[type=submit]{
 
 /*leaderboard*/
 .grid{
-	margin-top:2%;
 	margin-left:2%;
 	margin-right:20%;
 	display: grid;
-	grid-template-columns: repeat(5,1fr);
+	grid-template-columns: 1fr 2fr 2fr 1fr 2fr 3fr;
 	border-top:1px solid white;
 	border-right:1px solid white;
 }
@@ -371,10 +370,37 @@ input[type=submit]{
 	border-left: 1px solid white;
 	border-bottom:1px solid white;
 }
+.col{
+	background-color:red;
+}
+.col_functional:hover{
+	opacity: 50%;
+}
+#searchUserName{
+	margin-top:2%;
+	margin-bottom:1%;
+	background-image: url('/icons/search.png');
+	background-position: 10px 12px; /* Position the search icon */
+	background-repeat: no-repeat; /* Do not repeat the icon image */
+	width: 50%; /* Full-width */
+	color:white;
+	margin-left:2%;
+	margin-right:2%;
+	font-size: 16px; /* Increase font-size */
+	padding: 12px 20px 12px 40px; /* Add some padding */
+	border: 1px solid #ddd; /* Add a grey border */
+}
+.legend{
+	margin-top:1%;
+	margin-bottom:0%;
+	margin-left:0%;
+}
 @media screen and (max-width:1000px){
 	.grid{
-		margin-top:15%;
 		margin-left:2%;
 		margin-right:2%;
+	}
+	#searchUserName{
+		margin-top:7%;
 	}
 }
