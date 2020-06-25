@@ -120,7 +120,6 @@ function sendScore(){
     }
     if(newPrediction.score1>=0 && newPrediction.score1<=20 && newPrediction.score2>=0 && newPrediction.score2<=20 && newPrediction.score1!=='' && newPrediction.score2!==''){
         lastId++;
-        console.log(newPrediction);
         var ajaxRequest=new XMLHttpRequest();
         ajaxRequest.open("POST", "/submitPredictions", true);
         ajaxRequest.setRequestHeader('Content-Type','application/json');

@@ -355,3 +355,26 @@ input[type=submit]{
 	font-family:customFont;
 
 }
+
+/*leaderboard*/
+.grid{
+	margin-top:2%;
+	margin-left:2%;
+	margin-right:20%;
+	display: grid;
+	grid-template-columns: repeat(5,1fr);
+	border-top:1px solid white;
+	border-right:1px solid white;
+}
+.grid > span{
+	padding: 8px 4px;
+	border-left: 1px solid white;
+	border-bottom:1px solid white;
+}
+@media screen and (max-width:1000px){
+	.grid{
+		margin-top:15%;
+		margin-left:2%;
+		margin-right:2%;
+	}
+}

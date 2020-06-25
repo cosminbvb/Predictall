@@ -17,7 +17,6 @@
 			<%} else {%>
 				let id = null;
 			<%} %> 
-			console.log(id);
 		</script>
 		<script type="text/javascript" src="/scripts/matches.js"></script>
 	</head>
@@ -27,14 +26,12 @@
 			<section id="sectiune1">
 				<h1>Matches</h1>
 				<p>MATCHDAY 26 | SEASON 2019-2020</p>
-				<% if(locals.id != null) { console.log(locals.id) %> 
-					<!--<button id="submitPred" onclick="submitPredictions()">Submit Predictions</button>-->
+				<% if(locals.id != null) {%> 
 					<div class="matches">
 					</div>
 				<%} else {%>
 					<h2 style="color:red; display: block; float: left; margin-top: 5%; margin-right: 1%;">
 					You'll need to log in for this one.</h2> 
-					
 				<%} %>
 			</section>
 		</main>

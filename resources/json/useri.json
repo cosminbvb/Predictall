@@ -1,64 +1,48 @@
 {
-    "lastId": 6,
+    "lastId": 4,
     "useri": [
         {
             "id": 0,
             "username": "cosminbvb",
-            "nume": "Petrescu Cosmin",
+            "nume": "Cosmin Petrescu",
             "parola": "81e6246587b5857c774900880e50f189",
-            "country": "Romania",
+            "favouriteTeam": "Borussia Dortmund",
+            "country": "Germany",
             "score": 20,
-            "dataInreg": "2020-06-24T15:18:07.290Z",
+            "dataInreg": "2020-06-24T23:49:36.732Z",
             "rol": "user"
         },
         {
             "id": 1,
-            "username": "tudorp00",
-            "nume": "Tudor Pescaru",
+            "username": "ionel6203",
+            "nume": "Ion Ion",
             "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "Eintracht Frankfurt",
             "country": "Romania",
-            "score": 30,
-            "dataInreg": "2020-06-24T15:19:18.082Z",
+            "score": 40,
+            "dataInreg": "2020-06-24T23:50:27.027Z",
             "rol": "user"
         },
         {
             "id": 2,
-            "username": "cosmincos",
-            "nume": "Cosmin aus Deutschland",
+            "username": "marcoreus11",
+            "nume": "Marco Reus",
             "parola": "81e6246587b5857c774900880e50f189",
+            "favouriteTeam": "Borussia Dortmund",
             "country": "Germany",
-            "score": 25,
-            "dataInreg": "2020-06-24T15:21:03.055Z",
+            "score": 35,
+            "dataInreg": "2020-06-24T23:55:26.929Z",
             "rol": "user"
         },
         {
             "id": 3,
-            "username": "viorelbossu",
-            "nume": "Ion Viorel",
+            "username": "lionelm10",
+            "nume": "Lionel Messi",
             "parola": "81e6246587b5857c774900880e50f189",
-            "country": "Romania",
-            "score": 30,
-            "dataInreg": "2020-06-24T15:21:38.638Z",
-            "rol": "user"
-        },
-        {
-            "id": 4,
-            "username": "juanmiguel",
-            "nume": "Juan Miguel",
-            "parola": "81e6246587b5857c774900880e50f189",
-            "country": "Spain",
-            "score": 75,
-            "dataInreg": "2020-06-24T15:22:19.297Z",
-            "rol": "user"
-        },
-        {
-            "id": 5,
-            "username": "matei",
-            "nume": "Matei Iordache",
-            "parola": "81e6246587b5857c774900880e50f189",
-            "country": "Romania",
-            "score": 15,
-            "dataInreg": "2020-06-24T15:52:27.822Z",
+            "favouriteTeam": "FC Bayern Munchen",
+            "country": "Argentina",
+            "score": 18,
+            "dataInreg": "2020-06-24T23:56:15.218Z",
             "rol": "user"
         }
     ]

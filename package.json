@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "nodemon index.js"
   },
+  "nodemonConfig": {
+    "ignore": ["resources/json/*"]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cosminbvb/Predictall.git"

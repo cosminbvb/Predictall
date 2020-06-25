@@ -10,15 +10,34 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/style.css" rel="stylesheet">
 	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-	<script type="text/javascript" src="/scripts/leaderboard.js"></script>
+	<script src="/scripts/ejs.min.js"></script>
+	<script src="/scripts/leaderboard.js"></script>
+	<style>
+
+	</style>
 </head>
 
 <body>
 	<%- include("../fragmente/header") %>
 	<main>
 		<h1>Leaderboard - Top 50</h1>
-		<div id="leaderboard_div"></div>
-		
+		<div id="leaderboard_div" style="color:white;" class="grid">
+			<span>
+				<strong>Username</strong>
+			</span>
+			<span>
+				<strong>Name</strong>
+			</span>
+			<span>
+				<strong>Score</strong>
+			</span>
+			<span>
+				<strong>Country</strong>
+			</span>
+			<span>
+				<strong>Team</strong>
+			</span>
+		</div>
 	</main>
 	<%- include("../fragmente/footer") %>
 
