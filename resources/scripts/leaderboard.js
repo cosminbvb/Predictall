@@ -24,7 +24,16 @@ window.onload=function(){
                 average.innerHTML+=averageScore;
                 document.getElementById("leaderboard_div").style.color = "white";
                 columns=document.getElementById("leaderboard_div").innerHTML;
-                templateDisplay();
+                let searchedUsernameLocalStorage=localStorage.getItem("searchedUserName");
+                if(searchedUsernameLocalStorage && searchedUsernameLocalStorage.length>=1){
+                    console.log(searchedUsernameLocalStorage);
+                    document.getElementById("searchUserName").value=searchedUsernameLocalStorage;
+                    localStorage.removeItem("searchedUserName");
+                    searchUserName();
+                }
+                else{
+                    templateDisplay();
+                }
         }
     };
 
@@ -42,7 +51,6 @@ function templateDisplay(){
         //creez un template ejs (primul parametru al lui ejs.render)
         //acesta va primi ca parametru un user din vectorul de useri din json {user: obJson.useri[i]}
         //practic obJson.useri[i] e redenumit ca "user" in template si putem sa ii accesam proprietatile
-        //textTemplate+="<span>"+(i+1)+"</span>";
         
         //randare client side
         textTemplate+=ejs.render(
@@ -72,7 +80,17 @@ function orderByScore(){
     }
     templateDisplay(obJson);
     orderByScorePressed=-orderByScorePressed;
+    let elements=document.getElementById("leaderboard_div").children;
+    for(let i=9;i<=elements.length;i+=6){
+        elements[i].style.backgroundColor="#048BA8";
+    }
+    setTimeout(function(){
+        for(let i=9;i<=elements.length;i+=6){
+            elements[i].style.backgroundColor="black";
+        }
+    },1000);
 }
+
 
 var orderByNamePressed=1;
 function orderByName(){
@@ -88,6 +106,15 @@ function orderByName(){
     }
     templateDisplay(obJson);
     orderByNamePressed=-orderByNamePressed;
+    let elements=document.getElementById("leaderboard_div").children;
+    for(let i=8;i<=elements.length;i+=6){
+        elements[i].style.backgroundColor="#048BA8";
+    }
+    setTimeout(function(){
+        for(let i=8;i<=elements.length;i+=6){
+            elements[i].style.backgroundColor="black";
+        }
+    },1000);
 }
 
 var orderByUserNamePressed=1;
@@ -104,6 +131,15 @@ function orderByUserName(){
     }
     templateDisplay(obJson);
     orderByUserNamePressed=-orderByUserNamePressed;
+    let elements=document.getElementById("leaderboard_div").children;
+    for(let i=7;i<=elements.length;i+=6){
+        elements[i].style.backgroundColor="#048BA8";
+    }
+    setTimeout(function(){
+        for(let i=7;i<=elements.length;i+=6){
+            elements[i].style.backgroundColor="black";
+        }
+    },1000);
 }
 
 function searchUserName() {
@@ -113,6 +149,7 @@ function searchUserName() {
     // Declare variables
     var input,td, i, txtValue;
     input = document.getElementById("searchUserName").value;
+    localStorage.setItem("searchedUserName", input);
     list = obJson.useri;
   
     // Loop through all table rows, and hide those who don't match the search query
@@ -149,3 +186,7 @@ function colorByScore(){
         }
     }
 }
+
+setInterval(function(){
+    window.location.reload(1);
+ }, 300000)

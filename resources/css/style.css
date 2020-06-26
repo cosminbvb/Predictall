@@ -395,6 +395,9 @@ input[type=submit]{
 	margin-bottom:0%;
 	margin-left:0%;
 }
+#leaderboard_div span{
+	overflow-wrap: anywhere;
+}
 @media screen and (max-width:1000px){
 	.grid{
 		margin-left:2%;
@@ -402,5 +405,24 @@ input[type=submit]{
 	}
 	#searchUserName{
 		margin-top:7%;
+		
+	}
+	#login{
+		display:flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+	input{
+		width:60%;
+	}
+	.legend{
+		margin-left:4%;
+	}
+}
+@media screen and (max-width:500px){
+	#leaderboard_div span{
+		font-size:7px;
+		font-size:10px;
 	}
 }
