@@ -15,6 +15,27 @@
 		<%- include("../fragmente/header") %> <!-- nu e necesar sa specificam si extensia ejs -->
 		<!-- minusul de dupa < %  imi asigura faptul ca tagurile sunt tratate ca taguri si nu sunt afisate efectiv simbolurile <  si > -->
 		<main>
+			<% if(locals.username){ %>
+				<% if(locals.numberLogins!=undefined){ %>
+					<% if(locals.numberLogins!=0){ %>
+						<p style="color:white; font-size: smaller; margin-top: 0%;
+						margin-bottom:2%;">
+						Hello, <%= locals.username %>. Your last login was on 
+						<%= locals.lastLoginDay %> at <%= locals.lastLoginTime %>
+						 from the ip address <%= locals.lastIp %>.
+						Number of logins: <%= locals.numberLogins %>.
+						</p>
+					<% }
+					else{ %>
+					<p style="color:white; margin-top: 0%;
+					margin-bottom:2%;">
+					Hello, <%= locals.username %>. Today is your first login.
+					Welcome to Predictall.
+					</p>
+					<% } %>
+				<% } %>
+			<% } %>
+
 			<h1>Predictall</h1>
 			<section>
 				<h2>Welcome to Predictall - Bundesliga</h2>

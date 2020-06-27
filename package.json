@@ -8,7 +8,9 @@
     "prettify": "prettier --write index.js"
   },
   "nodemonConfig": {
-    "ignore": ["resources/json/*"]
+    "ignore": [
+      "resources/json/*"
+    ]
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "formidable": "^1.2.2"
+    "formidable": "^1.2.2",
+    "moment": "^2.27.0"
   }
 }

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const formidable = require("formidable");
 const crypto = require("crypto"); //default
 const session = require("express-session");
+const moment = require('moment');
 
 var path = require("path");
 var app = express(); //aici avem serverul
@@ -98,6 +99,7 @@ app.post("/inreg", function (req, res) {
     parolaCriptata = algoritmCriptare.update(fields.parola, "utf-8", "hex");
     parolaCriptata += algoritmCriptare.final("hex");
     obUseri = JSON.parse(fisierUseri);
+
     var userNou = {
       id: obUseri.lastId,
       username: fields.username,
@@ -107,8 +109,12 @@ app.post("/inreg", function (req, res) {
       country: fields.country,
       score: 0,
       dataInreg: new Date(),
+      numberLogins:0,
+      lastLogin:0,
+      lastIp:0,
       rol: "user",
     };
+
     obUseri.useri.push(userNou);
     obUseri.lastId++;
     var jsonNou = JSON.stringify(obUseri);
@@ -118,6 +124,9 @@ app.post("/inreg", function (req, res) {
 });
 
 //in primul parametru din app.post avem valoarea din action-ul formularului
+var failedLogins={};
+const maxFailedLoginsPerMinute=5;
+const maxFailedLoginsPerDay=50;
 app.post("/login", function (req, res) {
   var formular = new formidable.IncomingForm();
   formular.parse(req, function (err, fields, files) {
@@ -136,13 +145,41 @@ app.post("/login", function (req, res) {
       return u.username == fields.username && parolaCriptata == u.parola;
     });
     //find returneaza null daca nu gaseste elementul cu conditia data
+
+    var ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
+    req.connection.remoteAddress || 
+    req.socket.remoteAddress || 
+    req.connection.socket.remoteAddress
+
     if (utiliz) {
       //setez datele de sesiune
       req.session.utilizator = utiliz;
+
       //render primeste pe al doilea parametru date (organizate sub forma unui obiect) care pot fi transmise catre ejs (template)
-      res.render("html/index", { username: utiliz.username });
+      res.render("html/index", { username: req.session.utilizator.username,
+        lastLoginDay:moment(req.session.utilizator.lastLogin).format('D.MM.YYYY'),
+        lastLoginTime:moment(req.session.utilizator.lastLogin).format('HH:mm:ss'),
+        numberLogins:req.session.utilizator.numberLogins, 
+        lastIp:req.session.utilizator.lastIp});
+
+      //updatam lastLogin si numberLogins si le introducem in Json
+      obUseri.useri[utiliz.id].lastLogin=new Date();
+      obUseri.useri[utiliz.id].numberLogins++;
+      obUseri.useri[utiliz.id].lastIp=ip;
+      var jsonNou=JSON.stringify(obUseri);
+      fs.writeFileSync("resources/json/useri.json",jsonNou);
+      
+
     } else {
       res.render("html/index", { error: "Username or password incorrect" });
+      //console.log(ip);
+      if(failedLogins[ip]){
+        failedLogins[ip]++;
+      }
+      else{
+        failedLogins[ip]=1;
+      }
+      console.log(failedLogins);
     }
   });
 });
