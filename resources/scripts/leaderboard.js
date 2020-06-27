@@ -2,6 +2,7 @@ var obJson;
 var columns;
 var averageScore=0;
 window.onload=function(){
+    inactivity();
     var ajaxRequest=new XMLHttpRequest();
     ajaxRequest.onreadystatechange = function() {
         //daca am primit raspunsul (readyState==4) cu succes (codul status este 200)
@@ -29,6 +30,7 @@ window.onload=function(){
                     document.getElementById("searchUserName").value=searchedUsernameLocalStorage;
                     localStorage.removeItem("searchedUserName");
                     searchUserName();
+                    
                 }
                 else{
                     templateDisplay();
@@ -46,7 +48,7 @@ function templateDisplay(){
     //let columns=container.innerHTML;
     container.innerHTML="";
     let textTemplate=columns;
-    for(let i=0;i<15;i++){
+    for(let i=0;i<Math.min(15,obJson.useri.length);i++){
         //creez un template ejs (primul parametru al lui ejs.render)
         //acesta va primi ca parametru un user din vectorul de useri din json {user: obJson.useri[i]}
         //practic obJson.useri[i] e redenumit ca "user" in template si putem sa ii accesam proprietatile
@@ -195,3 +197,30 @@ function colorByScore(){
 setInterval(function(){
     window.location.reload(1);
  }, 300000)
+
+ function inactivity(){
+    var secondsOfInactivity=0;
+    const maxSeconds=5;
+    var show=document.getElementById("inactivityDiv");
+    show.style.display="none";
+    setInterval(function(){
+        secondsOfInactivity++;
+        if(secondsOfInactivity>maxSeconds){
+            show.style.display="initial";
+            show.style.opacity="0.7";
+            show.innerText=secondsOfInactivity+" seconds of inactivity";
+        }
+    },1000)
+
+    function resetInactivity(){
+        secondsOfInactivity=0;
+        show.style.display="none";
+    }
+
+    var events=['mousedown', 'mousemove', 'keydown',
+    'scroll', 'touchstart'];
+
+    events.forEach(function(eventName) {
+        document.addEventListener(eventName, resetInactivity, true);
+    });
+}

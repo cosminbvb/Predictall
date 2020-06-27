@@ -146,10 +146,12 @@ app.post("/login", function (req, res) {
     });
     //find returneaza null daca nu gaseste elementul cu conditia data
 
-    var ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
-    req.connection.remoteAddress || 
-    req.socket.remoteAddress || 
-    req.connection.socket.remoteAddress
+    // var ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
+    // req.connection.remoteAddress || 
+    // req.socket.remoteAddress || 
+    // req.connection.socket.remoteAddress
+
+    var ip=req.ip;
 
     if (utiliz) {
       //setez datele de sesiune
@@ -193,7 +195,7 @@ app.post("/submitPredictions", function (req, res) {
   var jsonNou = JSON.stringify(obUserPredictions);
   fs.writeFileSync("resources/json/userPredictions.json", jsonNou);
 
-  console.log(`Updated entry: ${JSON.stringify(req.body)}`);
+  //console.log(`Updated entry: ${JSON.stringify(req.body)}`);
   res.send();
 });
 
