@@ -26,7 +26,6 @@ window.onload=function(){
                 columns=document.getElementById("leaderboard_div").innerHTML;
                 let searchedUsernameLocalStorage=localStorage.getItem("searchedUserName");
                 if(searchedUsernameLocalStorage && searchedUsernameLocalStorage.length>=1){
-                    console.log(searchedUsernameLocalStorage);
                     document.getElementById("searchUserName").value=searchedUsernameLocalStorage;
                     localStorage.removeItem("searchedUserName");
                     searchUserName();
@@ -81,9 +80,11 @@ function orderByScore(){
     templateDisplay(obJson);
     orderByScorePressed=-orderByScorePressed;
     let elements=document.getElementById("leaderboard_div").children;
+    //setting the column color
     for(let i=9;i<=elements.length;i+=6){
         elements[i].style.backgroundColor="#048BA8";
     }
+    //removing it after a second
     setTimeout(function(){
         for(let i=9;i<=elements.length;i+=6){
             elements[i].style.backgroundColor="black";
@@ -107,9 +108,12 @@ function orderByName(){
     templateDisplay(obJson);
     orderByNamePressed=-orderByNamePressed;
     let elements=document.getElementById("leaderboard_div").children;
+
+    //setting the column color
     for(let i=8;i<=elements.length;i+=6){
         elements[i].style.backgroundColor="#048BA8";
     }
+    //removing it after a second
     setTimeout(function(){
         for(let i=8;i<=elements.length;i+=6){
             elements[i].style.backgroundColor="black";
@@ -173,7 +177,7 @@ function searchUserName() {
     }
     container.innerHTML+=textTemplate;
     colorByScore();
-  }
+}
 
 function colorByScore(){
     let elements=document.getElementById("leaderboard_div").children;
@@ -187,6 +191,7 @@ function colorByScore(){
     }
 }
 
+//reload the page every 5 minutes
 setInterval(function(){
     window.location.reload(1);
  }, 300000)

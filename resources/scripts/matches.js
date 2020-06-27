@@ -68,14 +68,14 @@ function getPastPredictions(){
         if(this.readyState==4 && this.status==200){
             //in proprietatea responseText am contintul fiserului JSON
             var obJson = JSON.parse(this.responseText);
-            getPastPredictions(obJson,id);
+            PastPredictions(obJson,id);
             lastId=obJson.lastId;
         }	
     }
     //deschid o conexiune cu o cerere de tip get catre server
     ajaxRequest.open("GET", "/json/userPredictions.json", true);
     ajaxRequest.send();
-    function getPastPredictions(obJson,id){
+    function PastPredictions(obJson,id){
         for(let i=0;i<obJson.userPredictions.length;i++){
             if(obJson.userPredictions[i].userId==id){
                 let score1=document.querySelectorAll('.score1')[obJson.userPredictions[i].predictionId];

@@ -4,7 +4,8 @@
   "description": "Predictall",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "prettify": "prettier --write index.js"
   },
   "nodemonConfig": {
     "ignore": ["resources/json/*"]
