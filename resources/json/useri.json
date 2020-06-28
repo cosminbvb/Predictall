@@ -1,0 +1,20 @@
+{
+    "lastId": 1,
+    "useri": [
+        {
+            "id": 0,
+            "username": "cosminbvb",
+            "nume": "Petrescu Cosmin",
+            "parola": "81e6246587b5857c774900880e50f189",
+            "email": "cosminfcpeue@gmail.com",
+            "favouriteTeam": "Borussia Dortmund",
+            "country": "Romania",
+            "score": 0,
+            "dataInreg": "2020-06-27T23:32:01.637Z",
+            "numberLogins": 2,
+            "lastLogin": "2020-06-28T10:26:12.556Z",
+            "lastIp": "::1",
+            "rol": "user"
+        }
+    ]
+}
