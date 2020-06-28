@@ -1,1 +1,6 @@
 node_modules/
+dist/
+npm-debug.log
+
+# Env files
+resources/json/useri.json
