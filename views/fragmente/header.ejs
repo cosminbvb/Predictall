@@ -2,12 +2,12 @@
     <nav class="wrapper">
         <ul class="menu">
             <li><a href="/index">Home</a></li>
-            <li><a href="/standings">Standings</a></li>
+            <li><a href="/leaderboard">Leaderboard</a></li>
             <li><a href="/matches">Matches</a></li>
             <li>
                 <div>Profile</div>
                 <ul class="submenu">
-                    <li><a href="/leaderboard">Leaderboard</a></li>
+                    <li><a href="/settings">Settings</a></li>
                     <li><a href="/inreg">Sign Up</a></li>
                 </ul>
             </li>
@@ -17,10 +17,16 @@
 
     <!-- verific daca s-a transmis campul username -->
     <!-- campurile transmise in render devin proprietati ale obiectului locals -->
-    <% if(!locals.username) {
+    <% if(!locals.username) { 
         if(locals.error) { %> 
             <script>
-                alert("Incorrect id/password");
+                let attempts=<%-locals.attemptsLeft%>;
+                if(attempts<=4){
+                    alert("Incorrect id/password. Attempts left: "+attempts);
+                }
+                else{
+                    alert("Incorrect id/password. Next failed login will result in a 5 minute ban");
+                }
             </script>
     <%} %>
         <form id="login" action="/login" method="post">

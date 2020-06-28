@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Settings</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Bundesliga Stats Predictions Game">
+		<meta name="keywords" content="Bundesliga, Home Page, German, Football">
+		<meta name="author" content="Petrescu Cosmin">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="/css/style.css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+		<script src="/scripts/inactivity.js"></script>
+		<script src="/scripts/settings.js"></script>
+	</head>
+	<body>
+		<%- include("../fragmente/header") %>
+		<main>
+            <h1>Settings</h1>
+            
+            <input type="text" id="changeBackground" placeholder="Enter a background color">
+            <button id="changeBackgroundSubmit" onclick="changeBackground()" style="background-color: red; color:white">Change color</button> 
+            
+        </main>
+		<%- include("../fragmente/footer") %>
+
+	</body>
+</html>

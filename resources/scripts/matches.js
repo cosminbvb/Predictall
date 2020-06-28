@@ -1,5 +1,9 @@
 var lastId;
 window.onload=function(){
+    if(localStorage.getItem("backgroundColor")){
+        let body=document.body;
+        body.style.backgroundColor=localStorage.getItem("backgroundColor");
+    }
     inactivity();
     //loading the current matches from predictions.json
     if(id != null)

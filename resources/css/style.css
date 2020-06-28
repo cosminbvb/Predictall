@@ -382,7 +382,7 @@ input[type=submit]{
 	background-image: url('/icons/search.png');
 	background-position: 10px 12px; /* Position the search icon */
 	background-repeat: no-repeat; /* Do not repeat the icon image */
-	width: 50%; /* Full-width */
+	width: 50%; 
 	color:white;
 	margin-left:2%;
 	margin-right:2%;
@@ -397,6 +397,20 @@ input[type=submit]{
 }
 #leaderboard_div span{
 	overflow-wrap: anywhere;
+}
+#changeBackground{
+	margin-top:2%;
+	margin-bottom:1%;
+	width: 50%; 
+	color:white;
+	margin-left:2%;
+	margin-right:2%;
+	font-size: 16px; /* Increase font-size */
+	padding: 12px 20px 12px 40px; /* Add some padding */
+	border: 1px solid #ddd; /* Add a grey border */
+}
+#changeBackgroundSubmit{
+	margin-left:2%;
 }
 @media screen and (max-width:1000px){
 	.grid{
@@ -441,4 +455,5 @@ input[type=submit]{
 	height:100%;
 	z-index: 100;
     width:100%;
-  }
+}
+

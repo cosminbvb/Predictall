@@ -1,4 +1,8 @@
 window.onload=function(){
+    if(localStorage.getItem("backgroundColor")){
+        let body=document.body;
+        body.style.backgroundColor=localStorage.getItem("backgroundColor");
+    }
     inactivity();
 }
 function inactivity(){
@@ -20,7 +24,7 @@ function inactivity(){
         show.style.display="none";
     }
 
-    var events=['mousedown', 'mousemove', 'keydown',
+    var events=['mousedown', 'mousemove', 'keydown','keyup','keypress',
     'scroll', 'touchstart'];
 
     events.forEach(function(eventName) {

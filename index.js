@@ -6,6 +6,7 @@ const formidable = require("formidable");
 const crypto = require("crypto"); //default
 const session = require("express-session");
 const moment = require('moment');
+const nodemailer = require('nodemailer');
 
 var path = require("path");
 var app = express(); //aici avem serverul
@@ -105,6 +106,7 @@ app.post("/inreg", function (req, res) {
       username: fields.username,
       nume: fields.nume,
       parola: parolaCriptata,
+      email:fields.email,
       favouriteTeam: fields.favouriteTeam,
       country: fields.country,
       score: 0,
@@ -123,29 +125,15 @@ app.post("/inreg", function (req, res) {
   });
 });
 
-//in primul parametru din app.post avem valoarea din action-ul formularului
 var failedLogins={};
-const maxFailedLoginsPerMinute=5;
-const maxFailedLoginsPerDay=50;
-app.post("/login", function (req, res) {
-  var formular = new formidable.IncomingForm();
-  formular.parse(req, function (err, fields, files) {
-    fisierUseri = fs.readFileSync("resources/json/useri.json");
-    var parolaCriptata;
-    //al doilea argument e parola(cheia) de criptare
-    var algoritmCriptare = crypto.createCipher(
-      "aes-128-cbc",
-      "parola_criptare"
-    );
-    parolaCriptata = algoritmCriptare.update(fields.parola, "utf-8", "hex");
-    parolaCriptata += algoritmCriptare.final("hex");
-    obUseri = JSON.parse(fisierUseri);
-    //var personalId;
-    var utiliz = obUseri.useri.find(function (u) {
-      return u.username == fields.username && parolaCriptata == u.parola;
-    });
-    //find returneaza null daca nu gaseste elementul cu conditia data
+//failedLogins va retine perechi de tipul
+//ip:[vector de maxim 5 date
+var blackList={};
+//blacklist va retine perechi de tipul
+//ip:data blocare
 
+app.post("/login", function (req, res) {
+      
     // var ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || 
     // req.connection.remoteAddress || 
     // req.socket.remoteAddress || 
@@ -153,37 +141,126 @@ app.post("/login", function (req, res) {
 
     var ip=req.ip;
 
-    if (utiliz) {
-      //setez datele de sesiune
-      req.session.utilizator = utiliz;
-
-      //render primeste pe al doilea parametru date (organizate sub forma unui obiect) care pot fi transmise catre ejs (template)
-      res.render("html/index", { username: req.session.utilizator.username,
-        lastLoginDay:moment(req.session.utilizator.lastLogin).format('D.MM.YYYY'),
-        lastLoginTime:moment(req.session.utilizator.lastLogin).format('HH:mm:ss'),
-        numberLogins:req.session.utilizator.numberLogins, 
-        lastIp:req.session.utilizator.lastIp});
-
-      //updatam lastLogin si numberLogins si le introducem in Json
-      obUseri.useri[utiliz.id].lastLogin=new Date();
-      obUseri.useri[utiliz.id].numberLogins++;
-      obUseri.useri[utiliz.id].lastIp=ip;
-      var jsonNou=JSON.stringify(obUseri);
-      fs.writeFileSync("resources/json/useri.json",jsonNou);
-      
-
-    } else {
-      res.render("html/index", { error: "Username or password incorrect" });
-      //console.log(ip);
-      if(failedLogins[ip]){
-        failedLogins[ip]++;
+    var goodToGo=true;
+    if(blackList[ip]){
+      //daca ip-ul e blacklisted
+      let currentDate=new Date();
+      //verificam daca a trecut cooldown-ul de 30 secunde
+      if(currentDate-blackList[ip]>30000){
+        console.log(currentDate);
+        console.log(currentDate-blackList[ip]);
+        //daca a trecut, il eliminam din blackList
+        blackList[ip]=undefined;
       }
       else{
-        failedLogins[ip]=1;
+        //daca inca are cooldown, nu se continua cererea
+        goodToGo=false;
       }
-      console.log(failedLogins);
     }
-  });
+    
+    if(goodToGo){
+
+      var formular = new formidable.IncomingForm();
+      formular.parse(req, function (err, fields, files) {
+      fisierUseri = fs.readFileSync("resources/json/useri.json");
+      var parolaCriptata;
+      //al doilea argument e parola(cheia) de criptare
+      var algoritmCriptare = crypto.createCipher(
+        "aes-128-cbc",
+        "parola_criptare"
+      );
+      parolaCriptata = algoritmCriptare.update(fields.parola, "utf-8", "hex");
+      parolaCriptata += algoritmCriptare.final("hex");
+      obUseri = JSON.parse(fisierUseri);
+      //var personalId;
+      var utiliz = obUseri.useri.find(function (u) {
+        return u.username == fields.username && parolaCriptata == u.parola;
+      });
+      //find returneaza null daca nu gaseste elementul cu conditia data
+      if (utiliz) {
+        //setez datele de sesiune
+        req.session.utilizator = utiliz;
+
+        //render primeste pe al doilea parametru date (organizate sub forma unui obiect) care pot fi transmise catre ejs (template)
+        res.render("html/index", { username: req.session.utilizator.username,
+          lastLoginDay:moment(req.session.utilizator.lastLogin).format('D.MM.YYYY'),
+          lastLoginTime:moment(req.session.utilizator.lastLogin).format('HH:mm:ss'),
+          numberLogins:req.session.utilizator.numberLogins, 
+          lastIp:req.session.utilizator.lastIp});
+
+        //updatam lastLogin si numberLogins si le introducem in Json
+        obUseri.useri[utiliz.id].lastLogin=new Date();
+        obUseri.useri[utiliz.id].numberLogins++;
+        obUseri.useri[utiliz.id].lastIp=ip;
+        var jsonNou=JSON.stringify(obUseri);
+        fs.writeFileSync("resources/json/useri.json",jsonNou);
+        
+
+      } else {
+      
+        if(failedLogins[ip] && failedLogins[ip].length==4){
+          //shiftam datele cu una la stanga
+          for(let i=0;i<4;i++){
+            failedLogins[ip][i]=failedLogins[ip][i+1];
+          }
+          //si adaugam data curenta
+          failedLogins[ip][4]=new Date();
+          if(failedLogins[ip][4]-failedLogins[ip][0]<180000){
+            //daca diferenta dintre prima incercare si ultima
+            //este mai mica de 3 minute, adaugam ip-ul la blacklist
+            blackList[ip]=new Date();
+            console.log("BLACKLISTED AT:"+blackList[ip]);
+            failedLogins[ip]=[];
+            var usernameToEmail=fields.username;
+            var utilizToEmail = obUseri.useri.find(function (u) {
+              return u.username == usernameToEmail;
+            });
+            if(utilizToEmail){
+              //trebuie sa notificam persoana cu acest username 
+              //de un posibil threat
+              var transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: 'predictall2020@gmail.com',
+                //parola a fost stearsa din motive personale
+                pass: ''
+              }
+              });
+              var mailOptions = {
+              from: 'predictall2020@gmail.com',
+              to: utilizToEmail.email,
+              subject: 'Possible Threat on Predictall Account',
+              text: 'A possible threat has been detected on your Predictall account. We recommend changing your password to a more complex one.'
+              };
+            
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+            }
+            
+          }
+        }
+        else{
+          if(!failedLogins[ip]){
+            failedLogins[ip]=[];
+            failedLogins[ip].push(new Date());
+          }
+          else{
+            failedLogins[ip].push(new Date());
+          }
+        }
+        res.render("html/index", { error: "Username or password incorrect", 
+        attemptsLeft:5-failedLogins[ip].length});
+      }
+      });
+    }
+    else{
+      return res.status(404).render("html/404");
+    }
 });
 
 app.post("/submitPredictions", function (req, res) {

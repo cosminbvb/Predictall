@@ -2,6 +2,10 @@ var obJson;
 var columns;
 var averageScore=0;
 window.onload=function(){
+    if(localStorage.getItem("backgroundColor")){
+        let body=document.body;
+        body.style.backgroundColor=localStorage.getItem("backgroundColor");
+    }
     inactivity();
     var ajaxRequest=new XMLHttpRequest();
     ajaxRequest.onreadystatechange = function() {
